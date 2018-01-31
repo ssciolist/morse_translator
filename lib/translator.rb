@@ -54,16 +54,16 @@ class Translator
     translation.join()
   end
 
-  def from_file(filename)
-    newfile = File.open.readlines.each do |line|
-      puts line
+  def from_file(file_name)
+    newfile = File.new(file_name)
+    newfile.open.each do |line|
+      line.downcase
+      line_array = line.split(//)
+      line_translation = line_array.map do |letter|
+        @dictionary[letter]
+      end
     end
-    binding.pry
-  #   filemessage = newfile.downcase.split(//)
-  #   filetranslation = filemessage.map do |letter|
-  #     @dictionary[letter]
-  #   end
-  #   filetranslation.join()
+    line_translation.join()
   end
 
 end
