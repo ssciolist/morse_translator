@@ -23,4 +23,18 @@ class Test_Translator < Minitest::Test
     translator.translate
     assert_equal "-..-----.-- ..-. -..... .--..-...-..", translator.translate
   end
+
+  def test_translator_can_use_numbers
+    translator = Translator.new
+    translator.record("3 blind mice 4 lunch")
+    translator.translate
+    assert_equal "...-- -....-....-.-.. --..-.-.. ....- .-....--.-.-.....", translator.translate
+  end
+
+  def test_translator_can_read_from_file
+    translator = Translator.new
+    translator.from_file("input.txt")
+    assert_equal ".. .--- ..-. .- ..-....-...", translator.from_file("input.txt")
+  end
+
 end
