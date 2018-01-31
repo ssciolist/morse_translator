@@ -2,6 +2,7 @@ require "minitest"
 require "minitest/pride"
 require "minitest/autorun"
 require "./lib/translator"
+require "pry"
 
 class Test_Translator < Minitest::Test
 
@@ -12,8 +13,14 @@ class Test_Translator < Minitest::Test
 
   def test_translator_record_message
     translator = Translator.new
-    translator.record("Timmy's in the well")
-    assert_equal "Timmy's in the well", translator.message
+    translator.record("Timmy in the well")
+    assert_equal "timmy in the well", translator.message
   end
 
+  def test_translator_translates
+    translator = Translator.new
+    translator.record("Timmy in the well")
+    translator.translate
+    assert_equal "-..-----.-- ..-. -..... .--..-...-..", translator.translate
+  end
 end

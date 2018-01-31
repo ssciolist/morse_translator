@@ -43,7 +43,15 @@ class Translator
   end
 
   def record(message)
-    @message = message
+    @message = message.downcase
+  end
+
+  def translate
+    array = @message.split(//)
+    translation = array.map do |letter|
+      @dictionary[letter]
+    end
+    translation.join()
   end
 
 end
