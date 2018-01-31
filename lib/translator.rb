@@ -1,5 +1,6 @@
 class Translator
-  attr_reader :dictionary
+  attr_reader :dictionary,
+              :message
 
   def initialize
     @dictionary = {"a" => ".-",
@@ -40,4 +41,9 @@ class Translator
                     "0" => "-----",
                     " " => " "}
   end
+
+  def record(message)
+    @message = message
+  end
+
 end
